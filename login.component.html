@@ -1,0 +1,36 @@
+<body>
+  <div class="container-fluid">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit(LoginForm.value)">
+      <div class="login-container">
+        <h2
+          style="color: rgb(220, 200, 20);text-align: center;font-size: 4vw;font-weight: bold;"
+        >
+          Login
+        </h2>
+        <br />
+        <div class="formgroup">
+          <label style="color:black;font-size: 2vw;font-weight: bold;"
+            >Username:</label
+          >
+          <input formControlName="name" type="text" class="form-control" />
+        </div>
+        <br />
+        <div class="formgroup">
+          <label
+            style="color:black;font-style: italic;font-size: 2vw;font-weight: bold;"
+            >Password:</label
+          >
+
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+          />
+        </div>
+        <br />
+        <button class="btn btn-link" type="submit">Login</button>
+        <a routerLink="/register" class="btn btn-link">Register</a>
+      </div>
+    </form>
+  </div>
+</body>

@@ -1,0 +1,75 @@
+<body>
+  <div class="container-fluid">
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="onSubmit(registrationForm.value)"
+    >
+      <div class="register-container">
+        <h2 style=" text-align: center;font-size: 4vw;font-weight: bold;">
+          Registration
+        </h2>
+        <br />
+        <div class="formgroup">
+          <label style="color:black;font-size: 2vw;font-weight: bold;"
+            >Username:</label
+          >
+          <input formControlName="name" type="text" class="form-control" />
+          <!-- <input [class.is-invalid]="name.invalid && name.touched" formControlName="name"
+                        type="text" class="form-control">
+                    <small [class.d-none]="name.valid || name.untouched" class="text-danger">Username is
+                        required</small>-->
+        </div>
+        <div class="formgroup">
+          <label
+            style="color:black;font-style: italic;font-size: 2vw;font-weight: bold;"
+            >Password:</label
+          >
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+          />
+          <!--<div *ngIf="password.invalid && password.touched">
+                        <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                        <small *ngIf="password.errors?.minlength" class="text-danger">Password must be atleast 6
+                            characters</small>
+                    </div>-->
+        </div>
+        <div class="formgroup">
+          <label
+            style="color:black;font-style: italic;font-size: 2vw;font-weight: bold;"
+            >Email:</label
+          >
+          <input formControlName="email" type="text" class="form-control" />
+          <!-- <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords do not match</small>-->
+        </div>
+        <div class="formgroup">
+          <label
+            style="color:black;font-style: italic;font-size: 2vw;font-weight: bold;"
+            >Select Role:</label
+          >
+          <select
+            class="custom-select"
+            (change)="changeRole($event)"
+            formControlName="role"
+          >
+            <option value="">Choose your role</option>
+            <option *ngFor="let role of Role" [ngValue]="role">{{
+              role
+            }}</option>
+          </select>
+        </div>
+        <br />
+        <button
+          [disabled]="!registrationForm.valid"
+          class="btn btn-success"
+          type="submit"
+        >
+          Register
+        </button>
+        &nbsp;
+        <button routerLink="/login" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</body>
